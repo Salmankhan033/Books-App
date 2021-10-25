@@ -74,34 +74,34 @@ const HomeScreen = ({ navigation }) => {
       </View>
       <FlatList
         data={search == "" ? Data : search}
-        keyExtractor={(item) => item.book_image}
-        renderItem={(item) => (
+        keyExtractor={(item, index) => index.toString()}
+        renderItem={({ item }) => (
           <View>
             <TouchableOpacity
-              onPress={() => navigation.navigate("detail", { item: item })}
+              onPress={() => navigation.navigate("detail", { itemData: item })}
             >
               <View style={styles.container}>
                 <Image
-                  source={{ uri: item.item.book_image }}
+                  source={{ uri: item.book_image }}
                   style={styles.image}
                   resizeMode="stretch"
                 />
 
                 <View style={styles.container2}>
-                  <Text style={styles.title}>Title: {item.item.title}</Text>
+                  <Text style={styles.title}>Title: {item.title}</Text>
                   <Text
                     numberOfLines={1}
                     ellipsizeMode="tail"
                     style={styles.description}
                   >
-                    Description: {item.item.description}
+                    Description: {item.description}
                   </Text>
                   <Text
                     numberOfLines={1}
                     ellipsizeMode="tail"
                     style={styles.authortext}
                   >
-                    Author Name: {item.item.author}
+                    Author Name: {item.author}
                   </Text>
                 </View>
               </View>

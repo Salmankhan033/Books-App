@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 const ForgetPasswordScreen = ({ navigation }) => {
+  const [email, setEmail] = useState("");
   return (
     <View style={styles.container}>
       <View style={styles.container2}>

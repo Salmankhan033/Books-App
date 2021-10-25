@@ -46,9 +46,7 @@ const Login = ({ navigation }) => {
           .auth()
           .signInWithEmailAndPassword(values.email, values.password)
           .then((result) => {
-            console.log(result);
             navigation.navigate("home");
-            setLoading(false);
           })
           .catch((error) => {
             const errorCode = error.code;

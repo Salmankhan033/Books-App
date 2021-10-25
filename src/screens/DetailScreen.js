@@ -11,23 +11,22 @@ import { fontSize, height, width } from "styled-system";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 const DetailScreen = ({ route }) => {
-  const { item } = route.params;
+  const item = route.params.itemData;
 
-  console.log(item);
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Book Details </Text>
       <Image
-        source={{ uri: item.item.book_image }}
+        source={{ uri: item.book_image }}
         style={styles.img}
         resizeMode="stretch"
       />
       <View style={styles.box}>
-        <Text style={styles.title}>Book Title: {item.item.title}</Text>
-        <Text style={styles.authortext}>Author: {item.item.author}</Text>
-        <Text style={styles.authortext}>Price: {item.item.price}$</Text>
+        <Text style={styles.title}>Book Title: {item.title}</Text>
+        <Text style={styles.authortext}>Author: {item.author}</Text>
+        <Text style={styles.authortext}>Price: {item.price}$</Text>
         <Text style={styles.description} numberOfLines={4}>
-          Description: {item.item.description}
+          Description: {item.description}
         </Text>
       </View>
     </View>
