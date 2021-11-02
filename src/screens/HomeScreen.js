@@ -24,18 +24,10 @@ const HomeScreen = ({ navigation }) => {
       .then((res) => res.json())
       .then((data) => {
         let vr = data.results.books;
-        //console.log(vr);
+
         setData(vr);
         setLoading(false);
       });
-    // const data = response.data.results.books;
-    // let json = response.json();
-    // // setData(response.data);
-    // setData(response.data.results.books);
-    // setData(data);
-    // //    const auth=data.books.author;
-
-    // console.log(json);
   }, []);
   const searchedData = (searchText) => {
     setSearch(
