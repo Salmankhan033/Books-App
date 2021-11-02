@@ -9,10 +9,6 @@ export const addBook = (book) => {
 };
 
 export const removeBook = (book) => {
-  console.log(
-    "------------------------------------------------------------index on action",
-    book
-  );
   return (dispatch) => {
     dispatch({
       type: REMOVE_BOOK,
