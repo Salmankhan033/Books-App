@@ -5,9 +5,8 @@ import {
   TextInput,
   TouchableOpacity,
   StyleSheet,
-  Button,
-  statusbar,
   KeyboardAvoidingView,
+  Image,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Formik } from "formik";
@@ -15,7 +14,7 @@ import * as yup from "yup";
 
 import * as firebase from "firebase";
 import LottieView from "lottie-react-native";
-
+const color = "#FFA500";
 let validateLogin = yup.object().shape({
   email: yup
     .string()
@@ -54,7 +53,6 @@ const Login = ({ navigation }) => {
             console.log(errorMessage);
             setLoading(false);
             alert(errorMessage);
-            // ..
           });
       }}
       validationSchema={validateLogin}
@@ -70,81 +68,80 @@ const Login = ({ navigation }) => {
       }) => (
         <View style={styles.container}>
           <KeyboardAvoidingView
-            behavior={Platform.OS === "ios" ? "padding" : "position"}
+            behavior={Platform.OS === "ios" ? "padding" : "padding"}
           >
-            <View style={styles.container2}>
-              <Text style={styles.logtext}>Login</Text>
-              <View style={styles.password}>
-                <TextInput
-                  placeholder="Email..."
-                  style={styles.passinput}
-                  onChangeText={handleChange("email")}
-                  onBlur={handleBlur("email")}
-                  value={values.email}
-                  keyboardType="email-address"
-                />
+            <Image
+              source={require("../assets/bookLogo.png")}
+              style={styles.logo}
+            />
+            <Text style={styles.logtext}>Login</Text>
+            <View style={styles.inputField}>
+              <TextInput
+                placeholder="Email..."
+                style={styles.boxinput}
+                onChangeText={handleChange("email")}
+                onBlur={handleBlur("email")}
+                value={values.email}
+                keyboardType="email-address"
+              />
 
+              <Ionicons
+                name={!errors.email ? "md-checkmark-outline" : "close"}
+                size={24}
+                color="black"
+                style={[
+                  styles.passIcon,
+                  { color: !errors.email ? "#4632A1" : "red" },
+                ]}
+              />
+            </View>
+
+            {errors.email && touched.email && (
+              <Text style={styles.error}>{errors.email}</Text>
+            )}
+            <View style={styles.inputField}>
+              <TextInput
+                placeholder="Password"
+                secureTextEntry={showPassword}
+                style={styles.boxinput}
+                onChangeText={handleChange("password")}
+                onBlur={handleBlur("password")}
+                value={values.password}
+              />
+              <TouchableOpacity onPress={() => setShowPAssword(!showPassword)}>
                 <Ionicons
-                  name={!errors.email ? "md-checkmark-outline" : "close"}
+                  name={showPassword ? "ios-eye" : "ios-eye-off"}
                   size={24}
                   color="black"
-                  style={[
-                    styles.passIcon,
-                    { color: !errors.email ? "#4632A1" : "red" },
-                  ]}
+                  style={styles.passIcon}
                 />
-              </View>
-
-              {errors.email && touched.email && (
-                <Text style={styles.error}>{errors.email}</Text>
-              )}
-              <View style={styles.password}>
-                <TextInput
-                  placeholder="Password"
-                  secureTextEntry={showPassword}
-                  style={styles.passinput}
-                  onChangeText={handleChange("password")}
-                  onBlur={handleBlur("password")}
-                  value={values.password}
-                />
-                <TouchableOpacity
-                  onPress={() => setShowPAssword(!showPassword)}
-                >
-                  <Ionicons
-                    name={showPassword ? "ios-eye" : "ios-eye-off"}
-                    size={24}
-                    color="black"
-                    style={styles.passIcon}
-                  />
-                </TouchableOpacity>
-              </View>
-              {errors.password && touched.password && (
-                <Text style={styles.error}>{errors.password}</Text>
-              )}
-              <TouchableOpacity
-                onPress={() => navigation.navigate("forgetPass")}
-              >
-                <Text style={styles.forgetpass}>Forget Password?</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  styles.btn,
-                  { backgroundColor: isValid ? "#3cb371" : "#CACFD2" },
-                ]}
-                disabled={!isValid}
-                onPress={handleSubmit}
-                // onPress={() => navigation.navigate("home")}
-              >
-                <Text style={styles.logBtn}>LOGIN</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={styles.touch}
-                onPress={() => navigation.navigate("signup")}
-              >
-                <Text style={styles.signupBtn}>Sign up</Text>
               </TouchableOpacity>
             </View>
+            {errors.password && touched.password && (
+              <Text style={styles.error}>{errors.password}</Text>
+            )}
+            <TouchableOpacity onPress={() => navigation.navigate("forgetPass")}>
+              <Text style={styles.forgetpass}>Forget Password?</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[
+                styles.btn,
+                { backgroundColor: isValid ? color : "#CACFD2" },
+              ]}
+              disabled={!isValid}
+              onPress={handleSubmit}
+              onPress={() => navigation.navigate("home")}
+            >
+              <Text style={styles.logBtn}>LOGIN</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={styles.touch}
+              onPress={() => navigation.navigate("signup")}
+            >
+              <Text>Don't have an account? </Text>
+              <Text style={styles.signupBtn}>SignUp here</Text>
+            </TouchableOpacity>
           </KeyboardAvoidingView>
         </View>
       )}
@@ -153,81 +150,94 @@ const Login = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   container: {
-    alignContent: "center",
-    alignItems: "center",
-
-    backgroundColor: "#003f5c",
+    justifyContent: "center",
+    paddingHorizontal: 20,
+    backgroundColor: "#fff",
     flex: 1,
   },
   container2: {
     marginTop: 250,
+    paddingHorizontal: 20,
   },
   logtext: {
-    fontSize: 35,
-    color: "#55ba82",
+    fontSize: 16,
+    // color: "#55ba82",
     marginBottom: 20,
     alignSelf: "center",
     fontWeight: "bold",
+    color: color,
   },
   input: {
     backgroundColor: "#465881",
     padding: 13,
     margin: 10,
-    width: 350,
-    borderRadius: 50,
+    borderRadius: 60,
     paddingLeft: 20,
+    color: "white",
   },
-  passinput: {
+  boxinput: {
     width: "90%",
+    borderRadius: 60,
     flex: 1,
     paddingLeft: 13,
+    color: color,
+    backgroundColor: "#fff",
   },
-  password: {
+  inputField: {
     flexDirection: "row",
     alignItems: "center",
-    borderRadius: 50,
-    backgroundColor: "#465881",
-    borderRadius: 50,
+    borderColor: color,
+    borderWidth: 1,
+    width: "100%",
+    borderRadius: 60,
     padding: 13,
-    margin: 10,
+    marginTop: 20,
+
     // paddingLeft: 20,
   },
   passIcon: {},
   forgetpass: {
     alignSelf: "center",
-    color: "#fff",
+    color: color,
+    marginTop: 15,
   },
   btn: {
     marginTop: 30,
     borderRadius: 60,
-    width: 300,
-    borderRadius: 50,
+    width: "100%",
+    borderRadius: 60,
     paddingLeft: 20,
-
-    color: "#fff",
     alignSelf: "center",
     alignItems: "center",
-    height: 45,
+    padding: 15,
     justifyContent: "center",
   },
   logBtn: {
-    color: "#fff",
+    color: "#000",
     alignSelf: "center",
     textAlignVertical: "center",
     justifyContent: "center",
   },
   signupBtn: {
-    color: "#fff",
+    color: color,
+    fontWeight: "bold",
   },
   touch: {
-    alignItems: "center",
-    marginTop: 10,
+    marginTop: 15,
+    flexDirection: "row",
+    alignSelf: "center",
   },
   error: {
     fontSize: 14,
     fontWeight: "bold",
     color: "red",
-    marginTop: 5,
+
+    alignSelf: "center",
+  },
+  logo: {
+    width: 300,
+    height: 200,
+    alignSelf: "center",
   },
 });
 

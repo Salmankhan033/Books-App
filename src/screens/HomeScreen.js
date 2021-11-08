@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import LottieView from "lottie-react-native";
 import { FontAwesome, Entypo } from "@expo/vector-icons";
+const color = "#FFA500";
 
 const HomeScreen = ({ navigation }) => {
   const [Data, setData] = useState([]);
@@ -43,12 +44,11 @@ const HomeScreen = ({ navigation }) => {
   }
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.header}>Books App</Text>
       <View style={styles.searchbr}>
         <FontAwesome
           name="search"
           size={24}
-          color="black"
+          color="#FFA500"
           style={styles.icon}
         />
         <TextInput
@@ -59,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
         <Entypo
           name="circle-with-cross"
           size={24}
-          color="black"
+          color="#FFA500"
           // onPress={() => setSearch([])}
           style={styles.icon}
         />
@@ -80,21 +80,30 @@ const HomeScreen = ({ navigation }) => {
                 />
 
                 <View style={styles.container2}>
-                  <Text style={styles.title}>Title: {item.title}</Text>
-                  <Text
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                    style={styles.description}
-                  >
-                    Description: {item.description}
-                  </Text>
-                  <Text
-                    numberOfLines={1}
-                    ellipsizeMode="tail"
-                    style={styles.authortext}
-                  >
-                    Author Name: {item.author}
-                  </Text>
+                  <View style={styles.text}>
+                    <Text style={styles.title}>Title:</Text>
+                    <Text> {item.title}</Text>
+                  </View>
+                  <View style={styles.text}>
+                    <Text style={styles.title}>Description:</Text>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={styles.description}
+                    >
+                      {item.description}
+                    </Text>
+                  </View>
+                  <View style={styles.text}>
+                    <Text style={styles.title}>Author Name:</Text>
+                    <Text
+                      numberOfLines={1}
+                      ellipsizeMode="tail"
+                      style={styles.authortext}
+                    >
+                      {item.author}
+                    </Text>
+                  </View>
                 </View>
               </View>
             </TouchableOpacity>
@@ -106,14 +115,16 @@ const HomeScreen = ({ navigation }) => {
 };
 const styles = StyleSheet.create({
   mainContainer: {
-    marginTop: StatusBar.currentHeight,
     flex: 1,
+    backgroundColor: "#fff",
   },
   container: {
     flexDirection: "row",
     flex: 1,
-    borderBottomColor: "#000",
+    borderColor: color,
     borderWidth: 0.5,
+    padding: 5,
+    margin: 5,
   },
   container2: {
     flexDirection: "column",
@@ -129,35 +140,35 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   description: {
-    width: 200,
+    width: 150,
   },
   authortext: {
-    width: 200,
+    width: 150,
   },
-  header: {
-    fontWeight: "bold",
-    fontSize: 30,
-    textAlign: "center",
-    marginBottom: 10,
-    marginTop: 10,
+  text: {
+    flexDirection: "row",
   },
+
   searchbr: {
     flexDirection: "row",
     alignContent: "center",
     alignSelf: "center",
     margin: 10,
-    height: 40,
-    backgroundColor: "#ccefee",
+    padding: 5,
+    borderWidth: 1,
+    borderColor: color,
     borderRadius: 30,
     marginBottom: 10,
   },
   input: {
-    width: 250,
+    width: "75%",
     marginLeft: 10,
+    color: "#FFA500",
   },
   icon: {
     alignSelf: "center",
     margin: 5,
+    marginLeft: 10,
   },
 });
 

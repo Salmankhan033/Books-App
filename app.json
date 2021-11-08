@@ -4,11 +4,11 @@
     "slug": "WeAreNova",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./src/assets/icon.png",
+    "icon": "./src/assets/bookLogo.png",
     "splash": {
-      "image": "./src/assets/splash.png",
+      "image": "./src/assets/logoWhite.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#FFA500"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
