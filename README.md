@@ -1,5 +1,5 @@
 # Books-App
-It's a book app where you can search for multiple books and purchase them.  
+It's a books app where you can search for multiple books and purchase them.  
 I use React-Redux for state management 
 
 
