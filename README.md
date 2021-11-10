@@ -43,7 +43,7 @@ When App is open the Splash screen appears.
 <td> <img src="https://user-images.githubusercontent.com/58082294/141053930-26033bba-b54f-4600-8644-b0e13908dc37.jpg" alt="Drawing"  width="150" height="300"/> </td>
 <td> <img src="https://user-images.githubusercontent.com/58082294/141053932-a9f23494-6e67-436d-b40c-cdc559715dde.jpg" alt="Drawing"  width="150" height="300"/> </td>
 </tr></table>
-### Onboarding Screens  
+### Onboarding Screens 
 The onboarding screen will appear only one time when you run the app the first time.
 There are three onboarding screens.
 <table>
@@ -64,9 +64,17 @@ There are three onboarding screens.
 <img src="https://user-images.githubusercontent.com/58082294/141058684-12d70d68-54c3-48bf-81c8-c9edb817a3ed.jpg" alt="Drawing"  width="150" height="300"/>
 
 ### login screen
+In Login Screen I applied formik and Yup validation. 
+If a user forgets their Password then click on forget password then it will go to forget the password.
+and if you have not account then click on signup.  
 <img src="https://user-images.githubusercontent.com/58082294/141058468-ae0c4855-c657-4f78-9eb1-5e16e774e1fd.jpg" alt="Drawing"  width="150" height="300"/>
 
+### Forget Password screen
+In Forget Password screen you rest your password.  
+<img src="https://user-images.githubusercontent.com/58082294/141058463-34af58fd-c180-41a1-813d-4a292950f440.jpg" alt="Drawing"  width="150" height="300"/>
+
 ### Signup screen
+
 <table>
  <tr>
   <td>Signup screen </td>
@@ -78,17 +86,17 @@ There are three onboarding screens.
 </tr></table>
 
 
-### Signup screen
-<img src="https://user-images.githubusercontent.com/58082294/141058463-34af58fd-c180-41a1-813d-4a292950f440.jpg" alt="Drawing"  width="150" height="300"/>
 
 ### Home screen  
 When the user sign-in/signup successfully then it will go to **Home screen**.In Home screen All books appear in FlatList, we can Search books by name.  
-when the user click on any book then it goes to the Detail screen
+when the user click on any book then it goes to the Detail screen.  
+
 <img src="https://user-images.githubusercontent.com/58082294/141060122-ee2b5649-b66b-48f0-9a05-09c93e84de87.jpg" alt="Drawing"  width="150" height="300"/>
 
 ### Detail screen  
 In Detail, the screen have All details about the selected book and their purchase link you can purchase that book directly from them.
-When users click on cart button then the book add to the cart 
+When users click on cart button then the book add to the cart.  
+
 <img src="https://user-images.githubusercontent.com/58082294/141060134-958a1a9c-d80f-475f-9047-800ff3da03d5.jpg" alt="Drawing"  width="150" height="300"/>
 
 
